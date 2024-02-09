@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-
+#Read the data
 df = pd.read_csv('archive\AtMid_Wingers.csv')
 df2 = pd.read_csv('archive\CenterBacks.csv')
 df3 = pd.read_csv('archive\Forwards.csv')
@@ -64,6 +64,7 @@ category_colors_gk = {
     'Avg. Distance of Def. Actions': 'navy'
 }
 
+#Create DataFrame for Non-GK and Gk attribute labels
 df7 = pd.DataFrame(Non_GK)
 df8 = pd.DataFrame(GK)
 labels = df7['Non-GK']
@@ -80,6 +81,7 @@ print(values.shape)
 """
 
 def print_player_stats(df, user_input, labels,category_colors):
+    #Extracts data for the given player
     player_data = df[df['Name'] == user_input]
 
     if player_data.empty:
@@ -93,7 +95,7 @@ def print_player_stats(df, user_input, labels,category_colors):
     #print("Values", values.shape)
     #print("Labels",labels.shape)
 
-
+    #finds length of labels
     num_vars = len(labels)
    
 
@@ -103,7 +105,7 @@ def print_player_stats(df, user_input, labels,category_colors):
     # Define width for each bar
     bar_width = 2 * np.pi / num_vars
 
-    # Plot
+    # Plot radar chart
     fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
 
     if category_colors:
@@ -117,11 +119,12 @@ def print_player_stats(df, user_input, labels,category_colors):
     else:
         ax.bar(angles, values, width=bar_width, alpha=0.7)
 
-
+    #changed the color of the graph fame
     ax.spines['polar'].set_color('grey') 
     plt.grid(axis='x')
     plt.title(user_input)
 
+    #added label and adjusted the location of the label
     labelPadding = 4
     lowerLimit = 30
     for angle, label in zip(angles, labels):
@@ -150,7 +153,7 @@ def print_player_stats(df, user_input, labels,category_colors):
     plt.xticks([])
     plt.show()
 
-# Get name from user input
+# Get name from user input and prints the radar graph
 user_input = input("Enter a name to search in the dataset: ")
 print_player_stats(df, user_input, labels,category_colors_non_gk)
 print_player_stats(df2, user_input, labels,category_colors_non_gk)
