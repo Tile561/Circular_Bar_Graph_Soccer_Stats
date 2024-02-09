@@ -50,23 +50,24 @@ category_colors_non_gk = {
 # Define color mappings for GK players
 category_colors_gk = {
     'PSxG-GA': 'blue',
-    'Goals Against': 'red',
-    'Save Percentage': 'green',
-    'PSxG/SoT': 'orange',
-    'Save% (Penalty Kicks)': 'purple',
-    'Clean Sheet Percentage': 'pink',
+    'Goals Against': 'blue',
+    'Save Percentage': 'blue',
+    'PSxG/SoT': 'blue',
+    'Save% (Penalty Kicks)': 'blue',
+    'Clean Sheet Percentage': 'blue',
     'Touches': 'cyan',
-    'Launch %': 'magenta',
-    'Goal Kicks': 'yellow',
-    'Avg. Length of Goal Kicks': 'brown',
-    'Crosses Stopped %': 'lime',
-    'Def. Actions Outside Pen. Area': 'teal',
+    'Launch %': 'cyan',
+    'Goal Kicks': 'cyan',
+    'Avg. Length of Goal Kicks': 'cyan',
+    'Crosses Stopped %': 'navy',
+    'Def. Actions Outside Pen. Area': 'navy',
     'Avg. Distance of Def. Actions': 'navy'
 }
 
 #Create DataFrame for Non-GK and Gk attribute labels
 df7 = pd.DataFrame(Non_GK)
 df8 = pd.DataFrame(GK)
+
 labels = df7['Non-GK']
 labels_gk = df8['GK']
 
@@ -119,6 +120,8 @@ def print_player_stats(df, user_input, labels,category_colors):
     else:
         ax.bar(angles, values, width=bar_width, alpha=0.7)
 
+    
+
     #changed the color of the graph fame
     ax.spines['polar'].set_color('grey') 
     plt.grid(axis='x')
@@ -148,10 +151,12 @@ def print_player_stats(df, user_input, labels,category_colors):
             rotation_mode="anchor",
             wrap=True
         )  
-
+        
+    
     ax.set_yticklabels([])
     plt.xticks([])
     plt.show()
+
 
 # Get name from user input and prints the radar graph
 user_input = input("Enter a name to search in the dataset: ")
@@ -160,4 +165,4 @@ print_player_stats(df2, user_input, labels,category_colors_non_gk)
 print_player_stats(df3, user_input, labels,category_colors_non_gk)
 print_player_stats(df4, user_input, labels,category_colors_non_gk)
 print_player_stats(df6, user_input, labels,category_colors_non_gk)
-
+print_player_stats(df5, user_input, labels_gk,category_colors_gk)
