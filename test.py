@@ -99,6 +99,7 @@ def print_player_stats(df, user_input, labels,category_colors):
     #finds length of labels
     num_vars = len(labels)
    
+    plt.rcParams['figure.figsize'] = [20,20]
 
     # Compute angle for each axis
     angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False)
@@ -107,14 +108,14 @@ def print_player_stats(df, user_input, labels,category_colors):
     bar_width = 2 * np.pi / num_vars
 
     # Plot radar chart
-    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+    fig, ax = plt.subplots(figsize=(20, 12.5), subplot_kw=dict(polar=True))
 
     if category_colors:
             for i, (label, value) in enumerate(zip(labels, values)):
                 color = category_colors.get(label, 'blue')  # Default to blue if category not found
                 ax.bar(angles[i], value, width=bar_width, alpha=0.6, color=color, edgecolor="black")
                 ax.bar(angles[i], 100, width=bar_width, alpha=0.1, color=color, edgecolor="black", linestyle='--')
-                ax.text(angles[i], value+5, str(round(value, 2)), ha='center', va='bottom',fontsize=7)
+                ax.text(angles[i], value+5, str(round(value, 2)), ha='center', va='bottom',fontsize=7, fontweight='bold')
 
          
     else:
@@ -125,7 +126,7 @@ def print_player_stats(df, user_input, labels,category_colors):
     #changed the color of the graph fame
     ax.spines['polar'].set_color('grey') 
     plt.grid(axis='x')
-    plt.title(user_input)
+    plt.title(user_input, position=(1, 0.5), ha='left', va='center',fontweight='bold')
 
     #added label and adjusted the location of the label
     labelPadding = 4
@@ -142,6 +143,7 @@ def print_player_stats(df, user_input, labels,category_colors):
              label = '\n'.join(label.split())
 
         ax.text(
+            fontsize=10,
             x=angle,
             y=lowerLimit + labelPadding + 80,
             s=label,
