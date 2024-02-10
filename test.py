@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 #Read the data
-df = pd.read_csv('archive\AtMid_Wingers.csv')
-df2 = pd.read_csv('archive\CenterBacks.csv')
-df3 = pd.read_csv('archive\Forwards.csv')
-df4 = pd.read_csv('archive\FullBacks.csv')
-df5 = pd.read_csv('archive\GoalKeepers.csv')
+df = pd.read_csv('archive/AtMid_Wingers.csv')
+df2 = pd.read_csv('archive/CenterBacks.csv')
+df3 = pd.read_csv('archive/Forwards.csv')
+df4 = pd.read_csv('archive/FullBacks.csv')
+df5 = pd.read_csv('archive/GoalKeepers.csv')
 df6 = pd.read_csv('archive/Midfielders.csv')
 
 
